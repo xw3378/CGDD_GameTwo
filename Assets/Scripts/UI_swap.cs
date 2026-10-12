@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Reset : MonoBehaviour
+public class UI_swap : MonoBehaviour
 {
-    public Button reset;
-    public Canvas TitleScreen;
+    public Button MyButton;
+    public Canvas CanvasToSwapTo;
     private Canvas canvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
-        reset.onClick.AddListener(ResetScene);
+        MyButton.onClick.AddListener(ResetScene);
     }
 
     // Update is called once per frame
@@ -22,11 +22,11 @@ public class Reset : MonoBehaviour
     private void ResetScene()
     {
         canvas.gameObject.SetActive(false);
-        TitleScreen.gameObject.SetActive(true);
+        CanvasToSwapTo.gameObject.SetActive(true);
     }
 
     private void OnDestroy()
     {
-        reset.onClick.RemoveListener(ResetScene);
+        MyButton.onClick.RemoveListener(ResetScene);
     }
 }
